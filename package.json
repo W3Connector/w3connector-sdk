@@ -1,6 +1,6 @@
 {
   "name": "@w3connector/sdk",
-  "version": "1.0.0",
+  "version": "1.0.1-alpha-testnet",
   "description": "SDK for w3connector",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -12,6 +12,9 @@
   },
   "author": "W3Connector",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@babel/preset-typescript": "^7.22.5",
     "@material-ui/styles": "^4.11.5",
