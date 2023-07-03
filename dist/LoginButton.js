@@ -1,4 +1,6 @@
-import { jsx as _jsx } from "react/jsx-runtime";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const jsx_runtime_1 = require("react/jsx-runtime");
 const LoginButton = ({ onClick }) => {
     const buttonStyle = {
         padding: '10px 20px 10px 20px',
@@ -22,7 +24,7 @@ const LoginButton = ({ onClick }) => {
     const handleMouseLeave = (event) => {
         Object.assign(event.currentTarget.style, buttonStyle);
     };
-    return (_jsx("button", { style: buttonStyle, onClick: onClick, onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave, children: "Login with W3Connector" }));
+    return ((0, jsx_runtime_1.jsx)("button", { style: buttonStyle, onClick: onClick, onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave, children: "Login with W3Connector" }));
 };
-export default LoginButton;
+exports.default = LoginButton;
 //# sourceMappingURL=LoginButton.js.map

@@ -1,6 +1,11 @@
-import { UserManager } from 'oidc-client-ts';
-import Cookies from 'js-cookie';
-import 'js-cookie';
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const oidc_client_ts_1 = require("oidc-client-ts");
+const js_cookie_1 = __importDefault(require("js-cookie"));
+require("js-cookie");
 const defaultAuthority = 'https://authstaging.w3connector.com';
 const responseType = 'code';
 class W3ConnectorOIDC {
@@ -16,7 +21,7 @@ class W3ConnectorOIDC {
             extraQueryParams: { request_domain: requestDomain },
             automaticSilentRenew: true
         };
-        this.userManager = new UserManager(config);
+        this.userManager = new oidc_client_ts_1.UserManager(config);
     }
     async login(redirect) {
         if (!this.userManager) {
@@ -27,12 +32,12 @@ class W3ConnectorOIDC {
     ;
     async logout() {
         this.userManager.signoutRedirect();
-        Cookies.remove("Authorization");
-        Cookies.remove("IdentityUserId");
-        Cookies.remove("ClientId");
-        Cookies.remove("IdentityPublicKey");
-        Cookies.remove("IdentityUserName");
-        Cookies.remove("id.session");
+        js_cookie_1.default.remove("Authorization");
+        js_cookie_1.default.remove("IdentityUserId");
+        js_cookie_1.default.remove("ClientId");
+        js_cookie_1.default.remove("IdentityPublicKey");
+        js_cookie_1.default.remove("IdentityUserName");
+        js_cookie_1.default.remove("id.session");
         return Promise.resolve();
     }
     async handleCallback() {
@@ -54,17 +59,17 @@ class W3ConnectorOIDC {
         const { access_token, expires_in = 0 } = token;
         const now = new Date();
         const options = rememberMe ? { expires: now.setSeconds(now.getSeconds() + expires_in) } : undefined;
-        Cookies.set('Authorization', 'Bearer ' + access_token, options);
+        js_cookie_1.default.set('Authorization', 'Bearer ' + access_token, options);
         this.decodeAccessToken(access_token);
     }
     decodeAccessToken(access_token) {
         const parsed = JSON.parse(atob(access_token.split('.')[1]));
-        Cookies.set('IdentityUserId', parsed['UserId']);
-        Cookies.set('ClientId', parsed['client_id']);
-        Cookies.set('IdentityPublicKey', parsed['PublicKey']);
-        Cookies.set('IdentityUserName', parsed['UserName']);
-        Cookies.set('id.session', parsed['sid']);
+        js_cookie_1.default.set('IdentityUserId', parsed['UserId']);
+        js_cookie_1.default.set('ClientId', parsed['client_id']);
+        js_cookie_1.default.set('IdentityPublicKey', parsed['PublicKey']);
+        js_cookie_1.default.set('IdentityUserName', parsed['UserName']);
+        js_cookie_1.default.set('id.session', parsed['sid']);
     }
 }
-export default W3ConnectorOIDC;
+exports.default = W3ConnectorOIDC;
 //# sourceMappingURL=W3ConnectorOIDC.js.map
