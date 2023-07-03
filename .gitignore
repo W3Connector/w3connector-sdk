@@ -2,7 +2,6 @@
 .vscode
 db/*
 build/
-dist/
 node_modules/
 bin/
 obj/
@@ -16,4 +15,3 @@ rabbitmq/*
 #Ecception
 !db/Dockerfile*
 !rabbitmq/Dockerfile*
-!w3connector-sdk/dist/
