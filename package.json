@@ -1,6 +1,6 @@
 {
   "name": "@w3connector/sdk",
-  "version": "1.0.2",
+  "version": "1.0.2-alpha-testnet",
   "description": "SDK for w3connector",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
